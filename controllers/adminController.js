@@ -24,8 +24,6 @@ const loginAdmin = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         )
-        console.log(token);
-        
 
         res.json({
             message: "Login successful",
