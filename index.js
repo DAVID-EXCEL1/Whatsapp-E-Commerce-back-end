@@ -6,7 +6,7 @@ const productRoutes = require("./routes/productRoutes")
 const cors = require("cors")
 const dotenv = require("dotenv")
 dotenv.config()
-const port = 3000 || process.env.PORT
+const port = process.env.PORT ||3000
 const URI = process.env.MONGO_URI
 
 app.use(cors())
