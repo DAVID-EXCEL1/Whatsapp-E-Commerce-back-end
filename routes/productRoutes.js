@@ -7,6 +7,9 @@ const upload = require("../middleware/uploadMiddleware")
 // Add product
 router.post("/", authMiddleware, upload.single("image"), async (req, res) => {
     try {
+        console.log("BODY:", req.body);
+        console.log("FILE:", req.file);
+
         const product = new Product({
             name: req.body.name,
             price: req.body.price,
@@ -16,13 +19,15 @@ router.post("/", authMiddleware, upload.single("image"), async (req, res) => {
             image: req.file ? req.file.path : ""
         });
 
+        console.log("IMAGE TO SAVE:", product.image);
+
         await product.save();
         res.status(201).json(product);
     } catch (error) {
+        console.log("UPLOAD ERROR:", error);
         res.status(500).json({ message: error.message });
     }
 });
-
 // Get all products
 router.get("/", async (req, res) => {
     try {
