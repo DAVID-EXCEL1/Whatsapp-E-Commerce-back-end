@@ -7,8 +7,8 @@ const upload = require("../middleware/uploadMiddleware")
 // Add product
 router.post("/", authMiddleware, upload.single("image"), async (req, res) => {
     try {
-        console.log("BODY:", req.body);
-        console.log("FILE:", req.file);
+        // console.log("BODY:", req.body);
+        // console.log("FILE:", req.file);
 
         const product = new Product({
             name: req.body.name,
